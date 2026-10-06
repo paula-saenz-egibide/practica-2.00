@@ -22,4 +22,12 @@ public class PatientRepositoryImpl implements PatientRepository {
         }
         return patient;
     }
+
+    @Override
+    public boolean isPatientAttendedByDoctor(int patient_id, int doctor_id) {
+        Doctor doctor = doctorDao.getDoctorByPatientId(patient_id);
+
+        // Comprobamos si se encontró el doctor y si coincide su ID con el buscado
+        return doctor != null && doctor.getId() == doctor_id;
+    }
 }
