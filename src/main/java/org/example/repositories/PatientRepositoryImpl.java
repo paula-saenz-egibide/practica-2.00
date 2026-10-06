@@ -3,7 +3,7 @@ package org.example.repositories;
 import org.example.dao.DoctorDao;
 import org.example.daos.DoctorDaoImpl;
 import org.example.dao.PatientDao;
-import org.example.daos.PatientDaoImpl;
+import org.example.idao.PatientDaoImpl;
 import org.example.irepositories.PatientRepository;
 import org.example.models.Doctor;
 import org.example.models.Patient;

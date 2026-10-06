@@ -9,5 +9,9 @@ public interface PatientDao {
     Patient getPatient(int id);
     List<Patient> getPatients();
     boolean update(Patient patient);
+
+    public List<Patient> getPatientsByDoctorId(int doctor_id);
 }
+
+
 
