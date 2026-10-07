@@ -3,19 +3,20 @@ package org.example.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.nio.file.Path;
 
 public class DatabaseConnection {
+
     private static DatabaseConnection instance;
     private Connection connection;
+
+    private static final String URL = "jdbc:sqlite:"
+            + Path.of("data", "practica202.db").toAbsolutePath();
+
     private DatabaseConnection() throws SQLException {
-        String url = "jdbc:mariadb://localhost:3306/practica202";
-        String user = "root";
-        String password = "";
-        this.connection = DriverManager.getConnection(url, user, password);
+        this.connection = DriverManager.getConnection(URL);
     }
-    public Connection getConnection() {
-        return connection;
-    }
+
     public static DatabaseConnection getInstance() throws SQLException {
         if (instance == null) {
             instance = new DatabaseConnection();
@@ -23,5 +24,9 @@ public class DatabaseConnection {
             instance = new DatabaseConnection();
         }
         return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

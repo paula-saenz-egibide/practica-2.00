@@ -18,6 +18,9 @@ public class PatientRepositoryImpl implements PatientRepository {
         Patient patient = patientDao.getPatient(id);
         if (patient != null) {
             Doctor doctor = doctorDao.getDoctorByPatientId(patient.getId());
+            if (doctor != null) {
+                doctor.setAttendedPatients(patientDao.getPatientsByDoctorId(doctor.getId()));
+            }
             patient.setDoctor(doctor);
         }
         return patient;
